@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.8.8'   // Update if your Jenkins config uses a different name
+        maven 'Maven 3.8.6'   // Update if your Jenkins config uses a different name
         jdk 'Java 11'         // Update to your actual JDK version in Jenkins
     }
 
