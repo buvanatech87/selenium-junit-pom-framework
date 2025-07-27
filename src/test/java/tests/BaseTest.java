@@ -17,10 +17,11 @@ public class BaseTest {
     public void setUp() {
         //WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless"); // Headless mode for Jenkins
+        options.addArguments("--headless=new"); // Headless mode for Jenkins
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--disable-gpu");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         //System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
