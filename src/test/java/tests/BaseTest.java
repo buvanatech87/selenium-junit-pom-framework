@@ -10,6 +10,29 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import factory.DriverFactory;
+
+
+@SuppressWarnings("unused")
+public abstract class BaseTest {
+
+    protected WebDriver driver;
+
+    @BeforeEach
+    public void setUp() {
+        driver = DriverFactory.initializeDriver();
+        driver.get("https://www.saucedemo.com/");
+        System.out.println("✅ WebDriver initialized and navigated to SauceDemo");
+    }
+
+    @AfterEach
+    public void tearDown() {
+        DriverFactory.quitDriver();
+        System.out.println("🧹 WebDriver closed");
+    }
+}
+
+/*
 public class BaseTest {
     protected WebDriver driver;
 
@@ -26,6 +49,7 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         //System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
         //driver = new ChromeDriver();
+        driver = DriverFactory.initializeDriver();
         System.out.println("Driver initialized");
         driver.manage().window().maximize();
         driver.get("https://www.saucedemo.com/");
@@ -37,4 +61,4 @@ public class BaseTest {
             driver.quit();
         }
     }
-}
+}*/
