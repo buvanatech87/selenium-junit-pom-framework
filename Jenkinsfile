@@ -5,6 +5,10 @@ pipeline {
         maven 'Maven_3.8.6'   // Update if your Jenkins config uses a different name
         jdk 'jdk-21'         // Update to your actual JDK version in Jenkins
     }
+    environment {
+        CHROME_BIN = '/usr/bin/google-chrome'
+        CHROMEDRIVER_BIN = '/usr/bin/chromedriver'
+    }
 
     stages {
         stage('Checkout') {
@@ -16,6 +20,15 @@ pipeline {
         stage('Build and Test') {
             steps {
                 bat 'mvn clean test' //windows used bat 
+            }
+        }
+
+        stage('Verify Environment') {
+            steps {
+                bat 'google-chrome --version'
+                bat 'chromedriver --version'
+                bat 'java -version'
+                bat 'mvn -v'
             }
         }
 
