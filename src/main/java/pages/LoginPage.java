@@ -3,7 +3,8 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage extends BasePage {
+public class LoginPage //extends BasePage 
+{
 
     private WebDriver driver;
 
@@ -12,7 +13,7 @@ public class LoginPage extends BasePage {
     private By loginButton = By.id("login-button");
 
     public LoginPage(WebDriver driver) {
-        super(driver);
+        this.driver = driver;  // Important!
     }
 
     public void login(String user, String pass) {
