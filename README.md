@@ -10,19 +10,34 @@ This repository demonstrates a complete UI automation framework using **Selenium
 
 ## 📁 Project Structure
 
+selenium-junit-pom/
 ├── pom.xml
-├── src
-│ ├── main
-│ │ └── java
-│ │ └── pages # Page Object Classes
-│ └── test
-│ └── java
-│ └── tests # Test Classes
-├── reports # Extent HTML Reports
-├── Jenkinsfile # Jenkins pipeline script
-└── .github
-└── workflows
-└── windows-maven.yml # GitHub Actions workflow
+├── Jenkinsfile
+├── README.md
+└── src
+    ├── main
+    │   └── java
+    │       └── pages/
+    │           ├── BasePage.java
+    │           ├── LoginPage.java
+    │           └── InventoryPage.java
+    └── test
+        ├── java
+        │   ├── testBase/
+        │   │   └── TestBase.java
+        │   ├── testCases/
+        │   │   ├── LoginTest.java
+        │   │   ├── CartTest.java
+        │   │   └── CheckoutTest.java
+        │   └── testSuites/
+        │       ├── SmokeTestSuite.java
+        │       ├── RegressionTestSuite.java
+        │       ├── E2ETestSuite.java
+        │       └── AllTestsSuite.java
+        └── resources/
+            ├── config.properties
+            └── testdata/
+                └── testdata.xlsx
 
 
 
