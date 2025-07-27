@@ -12,6 +12,7 @@ public class BaseTest {
     @BeforeEach
     public void setUp() {
         WebDriverManager.chromedriver().setup();
+        //System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://www.saucedemo.com/");
