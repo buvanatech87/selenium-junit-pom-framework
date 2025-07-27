@@ -1,6 +1,9 @@
 package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+
+import java.time.Duration;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
@@ -12,13 +15,14 @@ public class BaseTest {
 
     @BeforeEach
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
+        //WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless"); // Headless mode for Jenkins
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         //System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
         //driver = new ChromeDriver();
         System.out.println("Driver initialized");
