@@ -1,7 +1,11 @@
 package pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import actions.LoginActions;
 
@@ -9,6 +13,7 @@ public class LoginPage implements LoginActions  //extends BasePage
 {
 
     private WebDriver driver;
+    private WebDriverWait wait;
 
     
     //locators
@@ -21,7 +26,7 @@ public class LoginPage implements LoginActions  //extends BasePage
     //constructor
     public LoginPage(WebDriver driver) {
         this.driver = driver;  // Important!
-    }
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));   }
 
     
     //Actions
@@ -29,6 +34,8 @@ public class LoginPage implements LoginActions  //extends BasePage
     	driver.findElement(username).clear();
         driver.findElement(username).sendKeys(user);
         driver.findElement(password).clear();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(password));       
+                
         driver.findElement(password).sendKeys(pass);
         driver.findElement(loginButton).click();
     }
